@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Stage.cpp" />
     <ClCompile Include="InputState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene\GameclearScene.cpp" />
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
+    <ClInclude Include="Game\Stage.h" />
     <ClInclude Include="InputState.h" />
     <ClInclude Include="Scene\GameclearScene.h" />
     <ClInclude Include="Scene\GameoverScene.h" />

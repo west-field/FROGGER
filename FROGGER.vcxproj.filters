@@ -19,6 +19,9 @@
     <Filter Include="Scene">
       <UniqueIdentifier>{5c0e12e1-95ad-4eea-bff2-500e6f64d546}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{1a9e1b8c-ce7f-4ad6-8a43-2dc92ed72bdd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -63,6 +66,9 @@
     <ClCompile Include="InputState.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Stage.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\GameclearScene.h">
@@ -106,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="game.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Stage.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
