@@ -7,16 +7,30 @@
 #include "PauseScene.h"
 #include "GameoverScene.h"
 #include "GameclearScene.h"
+#include "../Util/DrawFunctions.h"
+#include "../Game/Stage.h"
+
+namespace
+{
+	//マップチップサイズ
+	constexpr int kMapSize = 16;
+	//マップチップ数
+	constexpr int kMapChipNum = 32;
+	//マップ表示拡大率(16*16を32*32に)
+	constexpr float kDrawScale = 2.0f;
+}
 
 GameplayingScene::GameplayingScene(SceneManager& manager) :
 	Scene(manager), updateFunc_(&GameplayingScene::FadeInUpdat)
 {
-
+	chipHandle_ = my::MyLoadGraph(L"Data/stage/mapchip.png");
+	stage_ = std::make_shared<Stage>();
+	stage_->Load(L"Data/stage/stage1.fmf");
 }
 
 GameplayingScene::~GameplayingScene()
 {
-
+	DeleteGraph(chipHandle_);
 }
 
 void GameplayingScene::Update(const InputState& input)
@@ -30,6 +44,27 @@ void GameplayingScene::Draw()
 	DrawString(0, 20, L"ゲームクリア:Enter", 0xffffff);
 	DrawString(0, 40, L"ゲームオーバー:z", 0xffffff);
 	DrawString(0, 60, L"ポーズ:P", 0xffffff);
+
+	//ステージを表示
+	int mW, mH;//ステージのサイズ
+	stage_->GetMapSize(mW, mH);
+	int chipId = 0;//チップIDの取得
+	for (int chipY = 0; chipY < mH; chipY++)
+	{
+		for (int chipX = 0; chipX < mW; chipX++)
+		{
+			chipId = stage_->GetChipId(0, chipX, chipY);
+			if (chipId != 0)
+			{
+				my::MyDrawRectRotaGraph(chipX * 32 + 16, chipY * 32 -10,//表示するサイズをかける
+										(chipId % kMapChipNum) * kMapSize, (chipId / kMapChipNum) * kMapSize,
+										kMapSize, kMapSize,
+										kDrawScale, 0.0f, chipHandle_, true, false);
+			}
+		}
+	}
+
+
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, fadeValue_);
 	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, fadeColor_, true);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);

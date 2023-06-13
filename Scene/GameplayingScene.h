@@ -1,6 +1,8 @@
 #pragma once
 #include "Secne.h"
+#include <memory>
 
+class Stage;
 
 /// <summary>
 /// ƒQ[ƒ€’†ƒV[ƒ“
@@ -26,5 +28,9 @@ private:
     void (GameplayingScene::* updateFunc_)(const InputState& input);
 
     int crea_ = 0;
+
+    int chipHandle_;
+
+    std::shared_ptr<Stage> stage_;
 };
 
