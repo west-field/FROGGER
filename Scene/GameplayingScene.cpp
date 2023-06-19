@@ -9,6 +9,7 @@
 #include "GameclearScene.h"
 #include "../Util/DrawFunctions.h"
 #include "../Game/Stage.h"
+#include "../Player.h"
 
 namespace
 {
@@ -26,6 +27,7 @@ GameplayingScene::GameplayingScene(SceneManager& manager) :
 	chipHandle_ = my::MyLoadGraph(L"Data/stage/mapchip.png");
 	stage_ = std::make_shared<Stage>();
 	stage_->Load(L"Data/stage/stage1.fmf");
+	player_ = std::make_shared<Player>();
 }
 
 GameplayingScene::~GameplayingScene()
@@ -35,6 +37,7 @@ GameplayingScene::~GameplayingScene()
 
 void GameplayingScene::Update(const InputState& input)
 {
+	player_->Update();
 	(this->*updateFunc_)(input);
 }
 
@@ -68,6 +71,7 @@ void GameplayingScene::Draw()
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, fadeValue_);
 	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, fadeColor_, true);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	player_->Draw();
 }
 
 void GameplayingScene::FadeInUpdat(const InputState& input)

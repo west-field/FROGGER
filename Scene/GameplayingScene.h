@@ -3,6 +3,7 @@
 #include <memory>
 
 class Stage;
+class Player;
 
 /// <summary>
 /// ƒQ[ƒ€’†ƒV[ƒ“
@@ -32,5 +33,6 @@ private:
     int chipHandle_;
 
     std::shared_ptr<Stage> stage_;
+    std::shared_ptr<Player> player_;
 };
 

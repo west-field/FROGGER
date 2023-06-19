@@ -150,6 +150,7 @@
     <ClCompile Include="Game\Stage.cpp" />
     <ClCompile Include="InputState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene\GameclearScene.cpp" />
     <ClCompile Include="Scene\GameoverScene.cpp" />
     <ClCompile Include="Scene\GameplayingScene.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="Game\Stage.h" />
     <ClInclude Include="InputState.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Scene\GameclearScene.h" />
     <ClInclude Include="Scene\GameoverScene.h" />
     <ClInclude Include="Scene\GameplayingScene.h" />
